@@ -1,92 +1,88 @@
 @php
+
     $users = [
             [
             'nama' => "asd",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis dolore fugit dolores est doloremque, inventore
-            modi aspernatur, culpa, perferendis minus delectus ut cum itaque iure nobis sunt! Eius, sunt dolorem?",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><p> Laborum est itaque eveniet laudantium! Autem placeat facere a, distinctio temporibus magnam eos alias, quod ad nihil quaerat aliquid necessitatibus repellendus non.</p>',
             'active' => true,
+            'alamat' => "asd", 
             'role' => "user",
             ],
             [
             'nama' => "asdf",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus magnam libero ut! Corporis aliquid labore
-            praesentium nostrum. Fugit fuga consequatur officiis dolore eius fugiat consequuntur voluptate, quo nesciunt porro
-            labore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod laboriosam veritatis quibusdam dolorum ad quaerat
-            repudiandae, fuga illum rerum velit consequuntur, rem iure fugit molestiae qui eos quisquam beatae earum.",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><p> Laborum est itaque eveniet laudantium! Autem placeat facere a, distinctio temporibus magnam eos alias, quod ad nihil quaerat aliquid necessitatibus repellendus non.</p>',
             'active' => false,
+            'alamat' => "asdf", 
             'role' => "admin",
             ],
             [
             'nama' => "asdc",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure id a corporis cumque pariatur! Laboriosam eaque
-            facere cum eveniet neque unde repellendus repellat fugit. Minus delectus quaerat similique accusamus enim?",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><p> Laborum est itaque eveniet laudantium! Autem placeat facere a, distinctio temporibus magnam eos alias, quod ad nihil quaerat aliquid necessitatibus repellendus non.</p>',
             'active' => true,
+            'alamat' => "asdc", 
             'role' => "admin",
             ],
             [
             'nama' => "asdg",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis dolore fugit dolores est doloremque, inventore
-            modi aspernatur, culpa, perferendis minus delectus ut cum itaque iure nobis sunt! Eius, sunt dolorem?",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><p> Laborum est itaque eveniet laudantium! Autem placeat facere a, distinctio temporibus magnam eos alias, quod ad nihil quaerat aliquid necessitatibus repellendus non.</p>',
             'active' => true,
+            'alamat' => "asdg", 
             'role' => "user",
             ],
             [
             'nama' => "asde",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus magnam libero ut! Corporis aliquid labore
-            praesentium nostrum. Fugit fuga consequatur officiis dolore eius fugiat consequuntur voluptate, quo nesciunt porro
-            labore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod laboriosam veritatis quibusdam dolorum ad quaerat
-            repudiandae, fuga illum rerum velit consequuntur, rem iure fugit molestiae qui eos quisquam beatae earum.",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><p> Laborum est itaque eveniet laudantium! Autem placeat facere a, distinctio temporibus magnam eos alias, quod ad nihil quaerat aliquid necessitatibus repellendus non.</p>',
             'active' => false,
+            'alamat' => "asde", 
             'role' => "user",
             ],
             [
             'nama' => "asdr",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure id a corporis cumque pariatur! Laboriosam eaque
-            facere cum eveniet neque unde repellendus repellat fugit. Minus delectus quaerat similique accusamus enim?",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><p> Laborum est itaque eveniet laudantium! Autem placeat facere a, distinctio temporibus magnam eos alias, quod ad nihil quaerat aliquid necessitatibus repellendus non.</p>',
             'active' => true,
+            'alamat' => "asdr", 
             'role' => "admin",
             ],
             [
             'nama' => "asdv",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis dolore fugit dolores est doloremque, inventore
-            modi aspernatur, culpa, perferendis minus delectus ut cum itaque iure nobis sunt! Eius, sunt dolorem?",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><p> Laborum est itaque eveniet laudantium! Autem placeat facere a, distinctio temporibus magnam eos alias, quod ad nihil quaerat aliquid necessitatibus repellendus non.</p>',
             'active' => true,
+            'alamat' => "asdv", 
             'role' => "user",
             ],
             [
             'nama' => "asds",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus magnam libero ut! Corporis aliquid labore
-            praesentium nostrum. Fugit fuga consequatur officiis dolore eius fugiat consequuntur voluptate, quo nesciunt porro
-            labore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod laboriosam veritatis quibusdam dolorum ad quaerat
-            repudiandae, fuga illum rerum velit consequuntur, rem iure fugit molestiae qui eos quisquam beatae earum.",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><p> Laborum est itaque eveniet laudantium! Autem placeat facere a, distinctio temporibus magnam eos alias, quod ad nihil quaerat aliquid necessitatibus repellendus non.</p>',
             'active' => false,
+            'alamat' => "asds", 
             'role' => "user",
             ],
             [
             'nama' => "asdd",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure id a corporis cumque pariatur! Laboriosam eaque
-            facere cum eveniet neque unde repellendus repellat fugit. Minus delectus quaerat similique accusamus enim?",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><p> Laborum est itaque eveniet laudantium! Autem placeat facere a, distinctio temporibus magnam eos alias, quod ad nihil quaerat aliquid necessitatibus repellendus non.</p>',
             'active' => true,
+            'alamat' => "asdd", 
             'role' => "admin",
             ],
             [
             'nama' => "asdde",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure id a corporis cumque pariatur! Laboriosam eaque
-            facere cum eveniet neque unde repellendus repellat fugit. Minus delectus quaerat similique accusamus enim?",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><p> Laborum est itaque eveniet laudantium! Autem placeat facere a, distinctio temporibus magnam eos alias, quod ad nihil quaerat aliquid necessitatibus repellendus non.</p>',
             'active' => true,
+            'alamat' => "asdde", 
             'role' => "admin",
             ],
-    ];
+    ];  
+
 
     $filter = [
     'active' => true,
@@ -104,7 +100,7 @@
         <div class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
             <div class="mb-8">
                 <div class="text-gray-900 font-bold text-xl mb-2">{{ $users[$id]['nama'] }}</div>
-                <p class="text-gray-700 text-base">{{ $users[$id]['bio'] }}</p>
+                <p class="text-gray-700 text-base">{!! $users[$id]['bio'] !!}</p>
                 </div>
                 <div class="flex items-center gap-4">
                 <p class="text-gray-900 leading-none">@if ($users[$id]['active']) aktif @endif</p>

@@ -1,104 +1,100 @@
 @php
+
     $users = [
             [
             'nama' => "asd",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis dolore fugit dolores est doloremque, inventore
-            modi aspernatur, culpa, perferendis minus delectus ut cum itaque iure nobis sunt! Eius, sunt dolorem?",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>',
             'active' => true,
+            'alamat' => "asd", 
             'role' => "user",
             ],
             [
             'nama' => "asdf",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus magnam libero ut! Corporis aliquid labore
-            praesentium nostrum. Fugit fuga consequatur officiis dolore eius fugiat consequuntur voluptate, quo nesciunt porro
-            labore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod laboriosam veritatis quibusdam dolorum ad quaerat
-            repudiandae, fuga illum rerum velit consequuntur, rem iure fugit molestiae qui eos quisquam beatae earum.",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>',
             'active' => false,
+            'alamat' => "asdf", 
             'role' => "admin",
             ],
             [
             'nama' => "asdc",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure id a corporis cumque pariatur! Laboriosam eaque
-            facere cum eveniet neque unde repellendus repellat fugit. Minus delectus quaerat similique accusamus enim?",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>',
             'active' => true,
+            'alamat' => "asdc", 
             'role' => "admin",
             ],
             [
             'nama' => "asdg",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis dolore fugit dolores est doloremque, inventore
-            modi aspernatur, culpa, perferendis minus delectus ut cum itaque iure nobis sunt! Eius, sunt dolorem?",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>',
             'active' => true,
+            'alamat' => "asdg", 
             'role' => "user",
             ],
             [
             'nama' => "asde",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus magnam libero ut! Corporis aliquid labore
-            praesentium nostrum. Fugit fuga consequatur officiis dolore eius fugiat consequuntur voluptate, quo nesciunt porro
-            labore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod laboriosam veritatis quibusdam dolorum ad quaerat
-            repudiandae, fuga illum rerum velit consequuntur, rem iure fugit molestiae qui eos quisquam beatae earum.",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>',
             'active' => false,
+            'alamat' => "asde", 
             'role' => "user",
             ],
             [
             'nama' => "asdr",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure id a corporis cumque pariatur! Laboriosam eaque
-            facere cum eveniet neque unde repellendus repellat fugit. Minus delectus quaerat similique accusamus enim?",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>',
             'active' => true,
+            'alamat' => "asdr", 
             'role' => "admin",
             ],
             [
             'nama' => "asdv",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis dolore fugit dolores est doloremque, inventore
-            modi aspernatur, culpa, perferendis minus delectus ut cum itaque iure nobis sunt! Eius, sunt dolorem?",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>',
             'active' => true,
+            'alamat' => "asdv", 
             'role' => "user",
             ],
             [
             'nama' => "asds",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus magnam libero ut! Corporis aliquid labore
-            praesentium nostrum. Fugit fuga consequatur officiis dolore eius fugiat consequuntur voluptate, quo nesciunt porro
-            labore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod laboriosam veritatis quibusdam dolorum ad quaerat
-            repudiandae, fuga illum rerum velit consequuntur, rem iure fugit molestiae qui eos quisquam beatae earum.",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>',
             'active' => false,
+            'alamat' => "asds", 
             'role' => "user",
             ],
             [
             'nama' => "asdd",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure id a corporis cumque pariatur! Laboriosam eaque
-            facere cum eveniet neque unde repellendus repellat fugit. Minus delectus quaerat similique accusamus enim?",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>',
             'active' => true,
+            'alamat' => "asdd", 
             'role' => "admin",
             ],
             [
             'nama' => "asdde",
             'foto' => '/img/error.png',
-            'bio' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure id a corporis cumque pariatur! Laboriosam eaque
-            facere cum eveniet neque unde repellendus repellat fugit. Minus delectus quaerat similique accusamus enim?",
+            'bio' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>',
             'active' => true,
+            'alamat' => "asdde", 
             'role' => "admin",
             ],
-    ];
+    ];    
 
     $filter = [
     'active' => true,
     'role' => "admin"
     ];
+
 @endphp
 @extends('components.parent')
 @section('content')
 
 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table class="max-w-[1000px] text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-white uppercase bg-gray-500 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="py-3 px-6">
                     Nama
@@ -113,7 +109,13 @@
                     Aktif
                 </th>
                 <th scope="col" class="py-3 px-6">
+                    Alamat
+                </th>
+                <th scope="col" class="py-3 px-6">
                     Role
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Detail
                 </th>
             </tr>
         </thead>
@@ -122,22 +124,22 @@
                 @if ($u['role'] == $filter['role'] && $u['active'] == true)
                     <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                         <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <?= $u['nama'] ?>
+                            {{ $u['nama'] }}
                         </th>
                         <th scope="row" class="py-4 px-6 w-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <img src="{{ asset($u['foto']) }}" alt="">
                         </th>
                         <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <p class=""><?= $u['bio'] ?></p>
+                            <p class="">{!! $u['bio'] !!}</p>
                         </th>
                         <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <?= $u['active'] ?>
+                            @if ($u['active']) aktif @else mati @endif
                         </th>
                         <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <?= $u['role'] ?>
+                            <p class="">{{ $u['alamat'] }}</p>
                         </th>
                         <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Apple MacBook Pro 17"
+                            {{ $u['role'] }}
                         </th>
                         <td class="py-4 px-6">
                             <a href="{{ route('user.show', $loop->iteration) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
