@@ -91,8 +91,10 @@
 @endphp
 @extends('components.parent')
 @section('content')
-
-    <div class="p-10">
+<div class="p-10">
+        <div class="mb-4">
+            <a href="{{ route('user.index') }}" class="py-[10px] px-[15px] rounded-lg bg-blue-500 text-white">Back to home</a>
+        </div>
         <!--Card 1-->
         <div class=" w-full lg:max-w-full lg:flex border border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 ">
         <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{ asset($users[$id]['foto']) }}')" title="Mountain">

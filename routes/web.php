@@ -23,11 +23,11 @@ Route::get('/users', function () {
         'title' => 'Homepage',
         'icon' => 'b.png'
     ]);
-});
+})->name('user.index');
 Route::get('/show/{id}', function ($id) {
     return view('show', [
         'title' => 'Userpage',
         'icon' => 'a.png',
-        'id' => $id
+        'id' => $id -1
     ]);
 })->name('user.show');
