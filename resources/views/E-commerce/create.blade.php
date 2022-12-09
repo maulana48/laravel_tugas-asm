@@ -11,8 +11,8 @@
 		<form action="{{ route('ec.store') }}" method="post" enctype="multipart/form-data">
 		@csrf
 		  <div class="mb-3">
-			<label for="nama" class="form-label">Nama</label>
-			<input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" required autofocus value="{{ old('nama') }}">
+			<label for="nama" class="form-label mr-4">Nama</label>
+			<input type="text" class="form-control rounded-xl @error('nama') is-invalid @enderror" name="nama" id="nama" required autofocus value="{{ old('nama') }}">
 			@error('nama')
 				<div class="invalid-feedback">
 					{{ $message }}
@@ -20,17 +20,17 @@
 			@enderror
 		  </div>
 		  <div class="mb-3 d-none">
-			  <label for="harga" class="form-label">Harga</label>
-			  <input type="number" class="form-control @error('harga') is-invalid @enderror form-siswa" name="harga" id="harga" autofocus value="{{ old('harga') }}">
+			  <label for="harga" class="form-label mr-4">Harga</label>
+			  <input type="number" class="form-control rounded-xl @error('harga') is-invalid @enderror form-siswa" name="harga" id="harga" autofocus value="{{ old('harga') }}">
 			  @error('harga')
-				  <div class="invalid-feedback">
+				  <div class="text-red">
 					  {{ $message }}
 				  </div>
 			  @enderror
 		  </div>
 		  <div class="mb-3">
-			<label for="diskon" class="form-label">Diskon</label>
-			<input type="number" class="form-control @error('diskon') is-invalid @enderror" name="diskon" id="diskon" required autofocus value="{{ old('diskon') }}">
+			<label for="diskon" class="form-label mr-4">Diskon</label>
+			<input type="number" class="form-control rounded-xl @error('diskon') is-invalid @enderror" name="diskon" id="diskon" required autofocus value="{{ old('diskon') }}">
 			@error('diskon')
 				<div class="invalid-feedback">
 					{{ $message }}
@@ -38,7 +38,7 @@
 			@enderror
 		  </div>
 		  <div class="mb-3">
-			<label for="foto" class="form-label">Tambahkan Foto</label>
+			<label for="foto" class="form-label mr-4">Tambahkan Foto</label>
 			<input type="file" name="foto" id="foto">
 		  </div>
 			<div class="mb-4">

@@ -8,7 +8,7 @@
         <div class="px-4 py-4">
             <div class="w-72 bg-white drop-shadow-md rounded-lg">
                 <img class="object-cover rounded-tl-lg rounded-tr-lg"
-                    src="{{ asset('img/' . $b['foto']) }}" />
+                    src="{{ asset($b['foto']) }}" />
                 <div class="px-5 py-3 space-y-2">
                     <h3 class="text-lg">{{ $b['nama'] }}</h3>
                     <div class="space-x-2">
@@ -22,7 +22,7 @@
                     </p>
                     <div class="flex justify-between items-center pt-3 pb-2">
                         <a href="{{ route('ec.show', $b->id) }}"
-                            class="px-4 py-2 bg-red-600 hover:bg-amber-600 text-center text-sm text-white rounded duration-300">
+                            class="px-4 py-2 bg-green-600 hover:bg-green-400 text-center text-sm text-white rounded duration-300">
                             Lihat Detail</a>
 
                         <a href="#" title="Add to Favorites"
@@ -31,6 +31,10 @@
                 </div>
             </div>
 
+            <div class="mt-4 flex justify-end gap-2">
+                <a href="{{ route('ec.edit', $b->id) }}" class="py-[5px] px-[10px] rounded-lg bg-blue-400 text-white">Edit Product</a>
+                <a href="{{ route('ec.destroy', $b->id) }}" class="py-[5px] px-[10px] rounded-lg bg-red-500 text-white">Hapus Product</a>
+            </div>
         </div>     
     @endforeach
     </div>

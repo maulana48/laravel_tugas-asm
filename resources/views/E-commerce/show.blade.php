@@ -1,58 +1,100 @@
 @extends('components.parent')
 @section('content')
-    <div class="p-10  bg-amber-100">
-        <div class="mb-4">
-            <a href="{{ route('ec.index') }}" class="py-[10px] px-[15px] rounded-lg bg-blue-500 text-white">Back to home</a>
-        </div>
-        <!--Card 1-->
-        <div class=" w-full lg:max-w-full lg:flex border border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 ">
-        <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{ asset('img/' . $barang->foto) }}')" title="Mountain">
-        </div>
-        <div class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-            <div class="mb-8">
-                <h3 class="text-lg">{{ $barang->nama }}</h3>
-                <p class="space-x-2 flex items-baseline">
-                    <span class="text-2xl font-semibold">{{ $barang->harga }}</span>
-                    <span class="text-sm line-through text-gray-500">{{ $barang->harga + $barang->harga/10 }}</span>
-                    <span class="text-sm text-red-700">{{ $barang->diskon }}% off</span>
-                </p>
-                </div>
-                <div class="flex items-center gap-4">
-                <div class="space-x-2">
-                    <span class="px-3 py-0.5 border border-blue-500 text-[11px] text-blue-500">Free Ship</span>
-                    <span class="px-3 py-0.5 border border-blue-500 text-[11px] text-blue-500">7 Day Return</span>
-                </div>
-                <p>|</p>
-                <a href="#" title="Add to Favorites" class="text-2xl text-gray-300 hover:text-red-500 duration-300">&hearts;</a>
+<div class="container mx-auto px-20 text-black">
+
+<div class="border bg-amber-100 rounded-lg p-6 relative z-10" style="cursor: auto;">
+                
+  <div class="flex flex-wrap items-center">
+
+                    
+    <div class="flex w-full h-48 md:h-64 lg:h-72 relative">
+                                                
+      <div class="w-8/12 pr-4 relative">
+                            
+                            
+        <img src="{{ asset($barang->foto) }}" class="w-full h-full object-cover object-top rounded-lg bg-white">
+                        
+      </div>
+                        
+      <div class="w-4/12 h-full">
+                            
+        <div class="flex flex-col w-full h-full">
+                                
+          <div class="flex-1 pb-2">
+                                    
+            <div class="w-full h-full relative">
+                                        
+              <img src="{{ asset($barang->foto) }}" class="absolute top-0 w-full h-full object-cover object-center rounded-lg bg-white">
+                                    
             </div>
+                                
+          </div>
+                                
+          <div class="flex-1 pt-2">
+                                    
+            <div class="w-full h-full relative">
+                                        
+              <img src="{{ asset($barang->foto) }}" class="absolute top-0 w-full h-full object-cover object-bottom rounded-lg bg-white">
+                                    
+            </div>
+                                
+          </div>
+                            
         </div>
-        </div>
+                        
+      </div>
+                    
     </div>
 
-
-    {{-- <div class="flex flex-wrap">
-        <div class="px-4 py-4">
-            <div class="w-72 bg-white drop-shadow-md rounded-lg">
-                <img class="object-cover rounded-tl-lg rounded-tr-lg"
-                    src="" />
-                <div class="px-5 py-3 space-y-2">
                     
-                    <p class="space-x-2">
-                        <span class="text-2xl font-semibold">{{ $barang->harga }}</span>
-                        <span class="text-sm line-through text-gray-500">{{ $barang->harga + $barang->harga/10 }}</span>
-                        <span class="text-sm text-red-700">{{ $barang->diskon }} off</span>
-                    </p>
-                    <div class="flex justify-between items-center pt-3 pb-2">
-                        <a href="#"
-                            class="px-4 py-2 bg-red-600 hover:bg-amber-600 text-center text-sm text-white rounded duration-300">
-                            Add to Cart</a>
+    <div class="w-full pt-8 flex flex-col justify-between">
+                        
+      <div>
+                            
+        <h2 class="font-bold text-xl">{{ $barang->nama }} <a href="#" title="Add to Favorites" class="text-4xl ml-4 border-black-500 text-gray-300 hover:text-red-500 duration-300">&hearts;</a> </h2>
+                            
+                
+        <div class="flex flex-wrap text-center pt-4 mb-2">
+                                                                    
+          <div class="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-green-400 text-green-900">{{ $barang->harga }}</div>
+                                                                    
+          <div class="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-red-400 line-through text-green-900">{{ $barang->harga + $barang->harga/10 }}</div>
+                                                                    
+          <div class="mr-2 mb-2 rounded-full px-3 py-1 text-xs bg-blue-400 text-green-900">{{ $barang->diskon }}% off</div>
+                                                            
+        </div>
+                            
+        <p class="text-xs leading-relaxed">This revolutionary email design kit is going to transform the way in which you send modern emails.</p>
+                                                            
+        <ul class="text-xs mt-4 list-disc list-inside leading-relaxed">
+                                                                            
+          <li>Responsive</li>
+                                                                            
+          <li> Mobile-friendly</li>
+                                                                            
+          <li> Media queries</li>
+                                                                            
+          <li> 20MB of JavaScript</li>
+                                                                    
+        </ul>
+                                                    
+      </div>
+                        
+      <div class="w-full sm:flex-1 grid gap-4 grid-cols-2 pt-6">
+                            
+        <a href="{{ route('ec.index') }}" class="flex items-center justify-center text-center relative text-white font-bold text-sm bg-gray-200 text-gray-800 px-8 py-3 rounded-lg shadow-lg hover:shadow-none hover:opacity-75">Back to home</a>
 
-                        <a href="#" title="Add to Favorites"
-                            class="text-2xl text-gray-300 hover:text-red-500 duration-300">&hearts;</a>
-                    </div>
-                </div>
-            </div>
+                                                                                                                                        
+        <button x-on:click="#" class="w-full block text-center relative text-white font-bold text-sm bg-teal-800 px-4 py-3 rounded-lg shadow-lg hover:shadow-none hover:opacity-75">Buy now</button>
+                                                                                                                        
+      </div>
+                    
+    </div>
 
-        </div> 
-    </div> --}}
+                
+  </div>
+            
+</div>
+</div>
+
 @endsection

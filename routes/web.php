@@ -43,5 +43,9 @@ Route::prefix('e-commerce')
         Route::get('/', 'index')->name('index');
         Route::get('/show/{id}', 'show')->name('show');
         Route::get('/create', 'create')->name('create');
+        Route::get('/edit/{product}', 'edit')->name('edit');
+
         Route::post('/store', 'store')->name('store');
+        Route::post('/update/{product}', 'update')->name('update');
+        Route::post('/destroy/{product}', 'destroy')->name('destroy');
 });
