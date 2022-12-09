@@ -3,11 +3,11 @@
     <div class="mb-4">
         <a href="{{ route('ec.create') }}" class="py-[10px] px-[15px] rounded-lg bg-blue-500 text-white">Tambahkan Product</a>
     </div>
-    <div class="flex flex-wrap bg-amber-100">
+    <div class="flex flex-wrap bg-amber-100 justify-center">
     @foreach ($listB as $b)
-        <div class="px-4 py-4">
+        <div class="px-4 py-4 mb-8">
             <div class="w-72 bg-white drop-shadow-md rounded-lg">
-                <img class="object-cover rounded-tl-lg rounded-tr-lg"
+                <img class="object-cover rounded-tl-lg rounded-tr-lg h-[300px] w-full"
                     src="{{ asset($b['foto']) }}" />
                 <div class="px-5 py-3 space-y-2">
                     <h3 class="text-lg">{{ $b['nama'] }}</h3>

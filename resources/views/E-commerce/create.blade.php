@@ -1,80 +1,89 @@
 @extends('components.parent')
 @section('content')
-    
+    <!-- component -->
 	<div class="d-flex my-4">
-		<h1 class="h2">Create New Siswa</h1>
+		<h1 class="text-center text-green-300 text-[30px] font-bold">Tambahkan Product</h1>
 	</div>
     <div class="mb-4">
         <a href="{{ route('ec.index') }}" class="py-[10px] px-[15px] rounded-lg bg-blue-500 text-white">Back to home</a>
     </div>
-	<div class="col-lg-8 mt-2">
-		<form action="{{ route('ec.store') }}" method="post" enctype="multipart/form-data">
-		@csrf
-		  <div class="mb-3">
-			<label for="nama" class="form-label mr-4">Nama</label>
-			<input type="text" class="form-control rounded-xl @error('nama') is-invalid @enderror" name="nama" id="nama" required autofocus value="{{ old('nama') }}">
-			@error('nama')
-				<div class="invalid-feedback">
-					{{ $message }}
-				</div>
-			@enderror
-		  </div>
-		  <div class="mb-3 d-none">
-			  <label for="harga" class="form-label mr-4">Harga</label>
-			  <input type="number" class="form-control rounded-xl @error('harga') is-invalid @enderror form-siswa" name="harga" id="harga" autofocus value="{{ old('harga') }}">
-			  @error('harga')
-				  <div class="text-red">
-					  {{ $message }}
-				  </div>
-			  @enderror
-		  </div>
-		  <div class="mb-3">
-			<label for="diskon" class="form-label mr-4">Diskon</label>
-			<input type="number" class="form-control rounded-xl @error('diskon') is-invalid @enderror" name="diskon" id="diskon" required autofocus value="{{ old('diskon') }}">
-			@error('diskon')
-				<div class="invalid-feedback">
-					{{ $message }}
-				</div>
-			@enderror
-		  </div>
-		  <div class="mb-3">
-			<label for="foto" class="form-label mr-4">Tambahkan Foto</label>
-			<input type="file" name="foto" id="foto">
-		  </div>
-			<div class="mb-4">
-				<button type="submit" class="py-[10px] px-[15px] rounded-lg bg-blue-500 text-white">Submit</button>
+	<div class="relative min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 bg-gray-500 bg-no-repeat bg-cover relative items-center"
+		style="background-image: url(https://images.unsplash.com/photo-1621243804936-775306a8f2e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);">
+		<div class="absolute bg-black opacity-60 inset-0 z-0"></div>
+		<div class="sm:max-w-lg w-full p-10 bg-white rounded-xl z-10">
+			<div class="text-center">
+				<h2 class="mt-5 text-3xl font-bold text-gray-900">
+					Tambahkan Produk!
+				</h2>
+				<p class="mt-2 text-sm text-gray-400">Lorem ipsum is placeholder text.</p>
 			</div>
-		</form>
+			<form class="mt-8 space-y-3" action="{{ route('ec.store') }}" method="POST" enctype="multipart/form-data">
+			@csrf
+						<div class="grid grid-cols-1 space-y-2">
+							<label class="text-sm font-bold text-gray-500 tracking-wide">Nama</label>
+								<input class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="" placeholder="Masukkan nama produk" @error('nama') is-invalid @enderror" name="nama" id="nama" required autofocus value="{{ old('nama') }}">
+
+							@error('nama')
+								<div class="invalid-feedback">
+									{{ $message }}
+								</div>
+							@enderror
+						</div>
+						<div class="grid grid-cols-1 space-y-2">
+							<label class="text-sm font-bold text-gray-500 tracking-wide">Harga</label>
+								<input class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="number" placeholder="Masukkan harga produk" @error('harga') is-invalid @enderror name="harga" id="harga" required autofocus value="{{ old('harga') }}">
+
+							@error('harga')
+								<div class="invalid-feedback">
+									{{ $message }}
+								</div>
+							@enderror
+						</div>
+						<div class="grid grid-cols-1 space-y-2">
+							<label class="text-sm font-bold text-gray-500 tracking-wide">Diskon</label>
+								<input class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="" placeholder="Masukkan diskon produk" @error('diskon') is-invalid @enderror form-siswa name="diskon" id="diskon" autofocus value="{{ old('diskon') }}">
+
+							@error('diskon')
+								<div class="invalid-feedback">
+									{{ $message }}
+								</div>
+							@enderror
+						</div>
+						<div class="grid grid-cols-1 space-y-2">
+										<label class="text-sm font-bold text-gray-500 tracking-wide">Tambahkan Foto</label>
+							<div class="flex items-center justify-center w-full">
+								<label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
+									<div class="h-full w-full text-center flex flex-col items-center justify-center items-center  ">
+										<div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
+										<img class="has-mask h-36 object-center" src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg" alt="freepik image">
+										</div>
+										<p class="pointer-none text-gray-500 "><span class="text-sm">Drag and drop</span> files here <br /> or <a href="" id="" class="text-blue-600 hover:underline">select a file</a> from your computer</p>
+									</div>
+									<input type="file" name="foto" id="foto" class="hidden">
+								</label>
+							</div>
+						</div>
+								<p class="text-sm text-gray-300">
+									<span>File type: doc,pdf,types of images</span>
+								</p>
+						<div>
+							<button type="submit" class="my-5 w-full flex justify-center bg-blue-500 text-gray-100 p-4  rounded-full
+										font-semibold  focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300">
+							Upload
+						</button>
+						</div>
+			</form>
+		</div>
 	</div>
 
-
-    
-	<script>
-        const role = document.querySelector("#role");
-        const none = document.querySelectorAll(".d-none");
-        const formSiswa = document.querySelectorAll(".form-siswa");
-
-		role.addEventListener('change', (e) => {
-			if(e.target.value == 4){
-				[].forEach.call(none, function(e) {
-					e.classList.remove("d-none");
-					// let a = e.children[1].classList.add("")
-					// console.log(e);
-					// console.log();
-				});
-  			// classList.remove("d-none");
-			}
-			console.log(e.target.value)
-		});
+	<style>
+		.has-mask {
+			position: absolute;
+			clip: rect(10px, 150px, 130px, 10px);
+		}
+	</style>
 
 
-        role.addEventListener("keyup", function() {
-            let preslug = role.value;				// njukuk role.value
-            preslug = preslug.replace(/ /g,"-");	// rplc spasi(char sebelum /g) dg "-"
-            slug.value = preslug.toLowerCase();		// mengisi slug dg lowercase hasilnya
-        });
-		
-	</script>
 @endsection
     
 
