@@ -91,9 +91,7 @@
 @endphp
 @extends('components.parent')
 @section('content')
-
-<div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-    <table class="max-w-[1000px] text-sm text-left text-gray-500 dark:text-gray-400">
+    <table class="max-w-[1000px] text-sm text-left text-gray-500 dark:text-gray-400 border-4 border-gray text-center m-auto">
         <thead class="text-xs text-white uppercase bg-gray-500 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="py-3 px-6">
@@ -149,6 +147,6 @@
             @endforeach
         </tbody>
     </table>
-</div>
+
 
 @endsection
