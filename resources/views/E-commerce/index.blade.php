@@ -1,5 +1,8 @@
 @extends('components.parent')
 @section('content')
+	<div class="d-flex my-4">
+		<h1 class="text-center text-green-300 text-[30px] font-bold">Product List</h1>
+	</div>
     <div class="mb-4">
         <a href="{{ route('ec.create') }}" class="py-[10px] px-[15px] rounded-lg bg-blue-500 text-white">Tambahkan Product</a>
     </div>
