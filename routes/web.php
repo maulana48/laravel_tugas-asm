@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,16 +19,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users', function () {
-    return view('index', [
-        'title' => 'Homepage',
-        'icon' => 'b.png'
-    ]);
-})->name('user.index');
-Route::get('/show/{id}', function ($id) {
-    return view('show', [
-        'title' => 'Userpage',
-        'icon' => 'a.png',
-        'id' => $id -1
-    ]);
-})->name('user.show');
+Route::prefix('user')->group(function(){
+    Route::get('/', function () {
+        return view('user.index', [
+            'title' => 'Homepage',
+            'icon' => 'b.png'
+        ]);
+    })->name('user.index');
+
+    Route::get('/show/{id}', function ($id) {
+        return view('user.show', [
+            'title' => 'Userpage',
+            'icon' => 'a.png',
+            'id' => $id -1
+        ]);
+    })->name('user.show');
+});
+
+Route::prefix('e-commerce')
+    ->name('ec.')
+    ->controller(Econtroller::class)
+    ->group(function(){
+        Route::get('/', 'index')->name('index');
+        Route::get('/show/{id}', 'show')->name('show');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+});
