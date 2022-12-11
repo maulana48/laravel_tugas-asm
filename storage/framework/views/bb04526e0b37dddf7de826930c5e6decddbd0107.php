@@ -1,5 +1,5 @@
-@extends('components.parent')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 
 <!-- Top Bar Nav -->
     <nav class="w-full py-4 bg-blue-800 shadow">
@@ -8,7 +8,7 @@
             <nav>
                 <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
                     <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Shop</a></li>
-                    <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ route('blog.create') }}">Create</a></li>
+                    <li><a class="hover:text-gray-200 hover:underline px-4" href="<?php echo e(route('blog.create')); ?>">Create</a></li>
                 </ul>
             </nav>
 
@@ -69,24 +69,25 @@
         <!-- Posts Section -->
         <section class="w-full md:w-2/3 flex flex-col items-center px-3">
             
-            @foreach ($posts as $post)
+            <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <article class="flex flex-col shadow my-4">
                     <!-- Article Image -->
                     <a href="#" class="hover:opacity-75">
                         <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1">
                     </a>
                     <div class="bg-white flex flex-col justify-start p-6">
-                        <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">{{ $post->category->name }}</a>
-                        <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">{{ $post->title }}</a>
+                        <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4"><?php echo e($post->category->name); ?></a>
+                        <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4"><?php echo e($post->title); ?></a>
                         <p href="#" class="text-sm pb-3">
-                            By <a href="#" class="font-semibold hover:text-gray-800">{{ "post->user->name" }}</a>, Published on {{ $post->created_at->diffForHumans() }}
+                            By <a href="#" class="font-semibold hover:text-gray-800"><?php echo e("post->user->name"); ?></a>, Published on <?php echo e($post->created_at->diffForHumans()); ?>
+
                         </p>
-                        <a href="#" class="pb-6">{{ $post->excerpt }}...</a>
-                        <a href="{{ route('blog.show', $post->id) }}" class="uppercase text-gray-800 hover:text-black">Continue Reading <i
+                        <a href="#" class="pb-6"><?php echo e($post->excerpt); ?>...</a>
+                        <a href="<?php echo e(route('blog.show', $post->id)); ?>" class="uppercase text-gray-800 hover:text-black">Continue Reading <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
             <!-- Pagination -->
             <div class="flex items-center py-8">
@@ -189,4 +190,5 @@
             }
     </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('components.parent', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\New folder\Alkademi\Laravel\tugas-laravel\resources\views/Blogs/index.blade.php ENDPATH**/ ?>

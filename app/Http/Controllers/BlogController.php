@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post\{ Post, Category };
+use App\Models\User;
+Use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
@@ -14,10 +16,12 @@ class BlogController extends Controller
      */
     public function index()
     {
+        // $post = Post::find(1);
+        // dd($post->user->name);
         return view('Blogs.index', [
             'title' => 'Blog Posts',
             'icon' => 'Blog/icon.png',
-            'posts' => Post::all()
+            'posts' => Post::latest()->get()
         ]);
     }
 
@@ -28,7 +32,12 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('Blogs.create', [
+            'title' => 'Create Posts',
+            'icon' => 'Blog/icon.png',
+            'categories' => Category::all(),
+            'users' => User::all()
+        ]);
     }
 
     /**
@@ -39,7 +48,22 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'title' => 'required',
+            'slug' => 'required',
+            'category_id' => 'required',
+            'user_id' => 'required',
+            'body' => 'required',
+        ];
+        $validatedData = $request->validate($rules);
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200, '...');
+        
+        if($request->file('image')){
+            $validatedData['image'] = $request->file('image')->store('img/Blog', ['disk' => 'public_uploads']);
+        }
+
+        Post::create($validatedData);
+        return redirect()->back();
     }
 
     /**
@@ -50,7 +74,12 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('Blogs.show', [
+            'title' => $post->title,
+            'icon' => 'Blog/icon.png',
+            'post' => $post
+        ]);
     }
 
     /**

@@ -1,5 +1,5 @@
-@extends('components.parent')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 
 <!-- Top Bar Nav -->
     <nav class="w-full py-4 bg-blue-800 shadow">
@@ -8,7 +8,7 @@
             <nav>
                 <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
                     <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Shop</a></li>
-                    <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ route('blog.create') }}">Create</a></li>
+                    <li><a class="hover:text-gray-200 hover:underline px-4" href="#">About</a></li>
                 </ul>
             </nav>
 
@@ -63,40 +63,60 @@
         </div>
     </nav>
 
-
     <div class="container mx-auto flex flex-wrap py-6">
 
-        <!-- Posts Section -->
+        <!-- Post Section -->
         <section class="w-full md:w-2/3 flex flex-col items-center px-3">
-            
-            @foreach ($posts as $post)
-                <article class="flex flex-col shadow my-4">
-                    <!-- Article Image -->
-                    <a href="#" class="hover:opacity-75">
-                        <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1">
-                    </a>
-                    <div class="bg-white flex flex-col justify-start p-6">
-                        <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">{{ $post->category->name }}</a>
-                        <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">{{ $post->title }}</a>
-                        <p href="#" class="text-sm pb-3">
-                            By <a href="#" class="font-semibold hover:text-gray-800">{{ "post->user->name" }}</a>, Published on {{ $post->created_at->diffForHumans() }}
-                        </p>
-                        <a href="#" class="pb-6">{{ $post->excerpt }}...</a>
-                        <a href="{{ route('blog.show', $post->id) }}" class="uppercase text-gray-800 hover:text-black">Continue Reading <i
-                                class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-            @endforeach
 
-            <!-- Pagination -->
-            <div class="flex items-center py-8">
-                <a href="#"
-                    class="h-10 w-10 bg-blue-800 hover:bg-blue-600 font-semibold text-white text-sm flex items-center justify-center">1</a>
-                <a href="#"
-                    class="h-10 w-10 font-semibold text-gray-800 hover:bg-blue-600 hover:text-white text-sm flex items-center justify-center">2</a>
-                <a href="#"
-                    class="h-10 w-10 font-semibold text-gray-800 hover:text-gray-900 text-sm flex items-center justify-center ml-3">Next
-                    <i class="fas fa-arrow-right ml-2"></i></a>
+            <article class="flex flex-col shadow my-4">
+                <!-- Article Image -->
+                <a href="#" class="hover:opacity-75">
+                    <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1">
+                </a>
+                <div class="bg-white flex flex-col justify-start p-6">
+                    <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4"><?php echo e($post->category->name); ?></a>
+                    <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4"><?php echo e($post->name); ?></a>
+                    <p href="#" class="text-sm pb-8">
+                        By <a href="#" class="font-semibold hover:text-gray-800"><?php echo e("post->user->name"); ?></a>, Published on <?php echo e($post->created_at->format('F jS, Y')); ?> | April 25th, 2020
+                    </p>
+                    <h1 class="text-2xl font-bold pb-3">Content</h1>
+                    <p class="pb-3"><?php echo $post->body; ?></p>
+                </div>
+            </article>
+
+            <div class="w-full flex pt-6">
+                <a href="#" class="w-1/2 bg-white shadow hover:shadow-md text-left p-6">
+                    <p class="text-lg text-blue-800 font-bold flex items-center"><i class="fas fa-arrow-left pr-1"></i> Previous</p>
+                    <p class="pt-2">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</p>
+                </a>
+                <a href="#" class="w-1/2 bg-white shadow hover:shadow-md text-right p-6">
+                    <p class="text-lg text-blue-800 font-bold flex items-center justify-end">Next <i class="fas fa-arrow-right pl-1"></i></p>
+                    <p class="pt-2">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</p>
+                </a>
+            </div>
+
+            <div class="w-full flex flex-col text-center md:text-left md:flex-row shadow bg-white mt-10 mb-10 p-6">
+                <div class="w-full md:w-1/5 flex justify-center md:justify-start pb-4">
+                    <img src="https://source.unsplash.com/collection/1346951/150x150?sig=1" class="rounded-full shadow h-32 w-32">
+                </div>
+                <div class="flex-1 flex flex-col justify-center md:justify-start">
+                    <p class="font-semibold text-2xl">David</p>
+                    <p class="pt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel neque non libero suscipit suscipit eu eu urna.</p>
+                    <div class="flex items-center justify-center md:justify-start text-2xl no-underline text-blue-800 pt-4">
+                        <a class="" href="#">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a class="pl-4" href="#">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a class="pl-4" href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="pl-4" href="#">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
 
         </section>
@@ -106,10 +126,8 @@
 
             <div class="w-full bg-white shadow flex flex-col my-4 p-6">
                 <p class="text-xl font-semibold pb-5">About Us</p>
-                <p class="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio
-                    sagittis tristique. Vestibulum ut finibus leo. In hac habitasse platea dictumst.</p>
-                <a href="#"
-                    class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
+                <p class="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In hac habitasse platea dictumst.</p>
+                <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
                     Get to know us
                 </a>
             </div>
@@ -127,8 +145,7 @@
                     <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=8">
                     <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=9">
                 </div>
-                <a href="#"
-                    class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6">
+                <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6">
                     <i class="fab fa-instagram mr-2"></i> Follow @dgrzyb
                 </a>
             </div>
@@ -138,7 +155,10 @@
     </div>
 
     <footer class="w-full border-t bg-white pb-12">
-        <div class="relative w-full flex items-center invisible md:visible md:pb-12" x-data="getCarouselData()">
+        <div
+            class="relative w-full flex items-center invisible md:visible md:pb-12"
+            x-data="getCarouselData()"
+        >
             <button
                 class="absolute bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 ml-12"
                 x-on:click="decrement()">
@@ -166,27 +186,28 @@
 
     <script>
         function getCarouselData() {
-                return {
-                    currentIndex: 0,
-                    images: [
-                        'https://source.unsplash.com/collection/1346951/800x800?sig=1',
-                        'https://source.unsplash.com/collection/1346951/800x800?sig=2',
-                        'https://source.unsplash.com/collection/1346951/800x800?sig=3',
-                        'https://source.unsplash.com/collection/1346951/800x800?sig=4',
-                        'https://source.unsplash.com/collection/1346951/800x800?sig=5',
-                        'https://source.unsplash.com/collection/1346951/800x800?sig=6',
-                        'https://source.unsplash.com/collection/1346951/800x800?sig=7',
-                        'https://source.unsplash.com/collection/1346951/800x800?sig=8',
-                        'https://source.unsplash.com/collection/1346951/800x800?sig=9',
-                    ],
-                    increment() {
-                        this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex + 1;
-                    },
-                    decrement() {
-                        this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex - 1;
-                    },
-                }
+            return {
+                currentIndex: 0,
+                images: [
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=1',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=2',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=3',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=4',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=5',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=6',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=7',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=8',
+                    'https://source.unsplash.com/collection/1346951/800x800?sig=9',
+                ],
+                increment() {
+                    this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex + 1;
+                },
+                decrement() {
+                    this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex - 1;
+                },
             }
+        }
     </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('components.parent', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\New folder\Alkademi\Laravel\tugas-laravel\resources\views/Blogs/show.blade.php ENDPATH**/ ?>
