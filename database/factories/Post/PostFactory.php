@@ -18,7 +18,7 @@ class PostFactory extends Factory
     {
         return [
             //
-            'user_id' => mt_rand(1, 10),
+            'user_id' => mt_rand(1, 6),
             'category_id' => mt_rand(1, 5),
             'title' => $this->faker->sentence(mt_rand(5, 8)),
             'slug' => $this->faker->slug(),

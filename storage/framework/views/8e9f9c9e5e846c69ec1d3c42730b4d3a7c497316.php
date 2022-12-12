@@ -154,23 +154,40 @@
     </div>
 
     <footer class="w-full border-t bg-white pb-12">
-        <div
-            class="relative w-full flex items-center invisible md:visible md:pb-12"
-            x-data="getCarouselData()"
-        >
-            <button
-                class="absolute bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 ml-12"
-                x-on:click="decrement()">
-                &#8592;
-            </button>
-            <template x-for="image in images.slice(currentIndex, currentIndex + 6)" :key="images.indexOf(image)">
-                <img class="w-1/6 hover:opacity-75" :src="image">
-            </template>
-            <button
-                class="absolute right-0 bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 mr-12"
-                x-on:click="increment()">
-                &#8594;
-            </button>
+        <div class="mx-auto pt-10">
+            <div class="text-center">
+                <h1 class="font-bold text-2xl">New Updates</h1>
+            </div>
+            <div class="flex justify-center flex-col md:flex-row gap-10 md:gap-5 pt-10 px-10">
+            <?php $__currentLoopData = $latest; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $l): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class=" overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:shadow-2xl rounded-lg md:w-80">
+                        <?php if($l->image): ?>
+                            <img alt="blog photo" src="<?php echo e(asset($l->image)); ?>" class="max-h-40 w-full object-cover" />
+                        <?php else: ?>
+                            <img alt="blog photo" src="https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80" class="max-h-40 w-full object-cover" />
+                        <?php endif; ?>
+                        <div class="bg-white w-full p-4">
+                            <a href="#" class="text-blue-600 text-2xl font-medium"><?php echo e($l->title); ?></a>
+                            <p class="text-gray-600 font-light text-md">
+                                <?php echo e($l->excerpt); ?>
+
+                                <a class="inline-flex text-blue-600" href="<?php echo e(route('blog.show', $l->id)); ?>">Read More</a>
+                            </p>
+                            <div class=" flex flex-wrap justify-starts items-center py-3 border-b-2 text-xs text-white font-medium">
+                                <a href="#" class="m-1 px-2 py-1 rounded bg-blue-500"> <?php echo e($l->category->name); ?> </a>
+                            </div>
+                            <div class="flex items-center mt-2">
+                                <img class="w-10 h-10 object-cover rounded-full" alt="User avatar"
+                                    src="https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200" />
+                                <div class="pl-2">
+                                    <div class="font-medium"><?php echo e($l->user->name); ?></div>
+                                    <div class="text-gray-600 text-xs"><?php echo e($l->user->username); ?></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </div>
         </div>
         <div class="w-full container mx-auto flex flex-col items-center">
             <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-6">
@@ -184,28 +201,6 @@
     </footer>
 
     <script>
-        function getCarouselData() {
-            return {
-                currentIndex: 0,
-                images: [
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=1',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=2',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=3',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=4',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=5',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=6',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=7',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=8',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=9',
-                ],
-                increment() {
-                    this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex + 1;
-                },
-                decrement() {
-                    this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex - 1;
-                },
-            }
-        }
     </script>
 
 <?php $__env->stopSection(); ?>

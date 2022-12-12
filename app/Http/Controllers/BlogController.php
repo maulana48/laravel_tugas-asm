@@ -18,12 +18,10 @@ class BlogController extends Controller
      */
     public function index()
     {
-        // $post = Post::find(1);
-        // dd($post->user->name);
         return view('Blogs.index', [
             'title' => 'Blog Posts',
             'icon' => 'Blog/icon.png',
-            'posts' => Post::latest()->paginate(5)
+            'posts' => Post::with(['user', 'category'])->latest()->paginate(5)
         ]);
     }
 
@@ -77,6 +75,7 @@ class BlogController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+        $latest = Post::with(['user', 'category'])->latest()->limit(3)->get();
         $i = $id - 1;
         $PVpost = Post::find($i);
         $i = $id + 1;
@@ -88,7 +87,8 @@ class BlogController extends Controller
             'post' => $post,
             'user' => $user,
             'PVpost' => $PVpost,
-            'NXpost' => $NXpost
+            'NXpost' => $NXpost,
+            'latest' => $latest
         ]);
     }
 
