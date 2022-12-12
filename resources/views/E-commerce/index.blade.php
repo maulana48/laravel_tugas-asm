@@ -3,7 +3,8 @@
 	<div class="d-flex my-4">
 		<h1 class="text-center text-green-300 text-[30px] font-bold">Product List</h1>
 	</div>
-    <div class="mb-4">
+    <div class=" flex gap-2 mb-4">
+        <a href="{{ route('logout') }}" class="py-[10px] px-[15px] rounded-lg bg-red-500 text-white">Logout</a>
         <a href="{{ route('ec.create') }}" class="py-[10px] px-[15px] rounded-lg bg-blue-500 text-white">Tambahkan Product</a>
     </div>
     <div class="flex flex-wrap bg-amber-100 justify-center">

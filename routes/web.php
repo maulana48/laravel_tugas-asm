@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{ EController, BlogController };
+use App\Http\Controllers\{ EController, BlogController, AuthController };
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +18,9 @@ use App\Http\Controllers\{ EController, BlogController };
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::any('/login', [AuthController::class, 'login'])->name('login')->middleware(['noAuth']);
+Route::any('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::prefix('user')->group(function(){
     Route::get('/', function () {
@@ -39,6 +42,7 @@ Route::prefix('user')->group(function(){
 Route::prefix('e-commerce')
     ->name('ec.')
     ->controller(Econtroller::class)
+    ->middleware(['withAuth'])
     ->group(function(){
         Route::get('/', 'index')->name('index');
         Route::get('/show/{id}', 'show')->name('show');
@@ -48,7 +52,7 @@ Route::prefix('e-commerce')
         Route::post('/store', 'store')->name('store');
         Route::post('/update/{product}', 'update')->name('update');
         Route::post('/destroy/{product}', 'destroy')->name('destroy');
-});
+    });
 
 Route::prefix('Blog')
     ->name('blog.')
