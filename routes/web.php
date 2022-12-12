@@ -60,6 +60,6 @@ Route::prefix('Blog')
         Route::get('/edit/{product}', 'edit')->name('edit');
 
         Route::post('/store', 'store')->name('store');
-        Route::post('/update/{post}', 'update')->name('update');
-        Route::post('/destroy/{post}', 'destroy')->name('destroy');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::post('/destroy/{id}', 'destroy')->name('destroy');
 });

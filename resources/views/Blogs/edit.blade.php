@@ -41,22 +41,23 @@
         </div>
     </header>
 
-	<!-- component -->
+
+<!-- component -->
 	<div class="relative min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 bg-gray-500 bg-no-repeat bg-cover relative items-center"
 		style="background-image: url(https://images.unsplash.com/photo-1621243804936-775306a8f2e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);">
 		<div class="absolute bg-black opacity-60 inset-0 z-0"></div>
 		<div class="sm:max-w-lg min-w-full p-10 bg-white rounded-xl z-10">
-			<div class="text-center">	
-				<div class="d-flex my-4">
-					<h1 class="text-center text-green-300 text-[30px] font-bold">Create new post</h1>
-				</div>
+			<div class="text-center">
+                <div class="d-flex my-4">
+                    <h1 class="text-center text-green-300 text-[30px] font-bold">Edit post</h1>
+                </div>
 				<p class="mt-2 text-sm text-gray-400">Lorem ipsum is placeholder text.</p>
 			</div>
-			<form class="mt-8 space-y-3" action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
+			<form class="mt-8 space-y-3" action="{{ route('blog.update', $post->id) }}" method="POST" enctype="multipart/form-data">
 			@csrf
 						<div class="grid grid-cols-1 space-y-2">
 							<label for="title" class="text-sm font-bold text-gray-500 tracking-wide">Title</label>
-								<input class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="" placeholder="Insert post title" @error('title') is-invalid @enderror" name="title" id="title" required autofocus value="{{ old('title') }}">
+								<input class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="" placeholder="Insert post title" @error('title') is-invalid @enderror" name="title" id="title" required autofocus value="{{ old('title', $post->title) }}">
 
 							@error('title')
 								<div class="invalid-feedback">
@@ -66,7 +67,7 @@
 						</div>
 						<div class="grid grid-cols-1 space-y-2">
 							<label for="slug" class="text-sm font-bold text-gray-500 tracking-wide">Slug</label>
-								<input class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="" placeholder="slug" @error('slug') is-invalid @enderror" name="slug" id="slug" required autofocus value="{{ old('slug') }}">
+								<input class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="" placeholder="slug" @error('slug') is-invalid @enderror" name="slug" id="slug" required autofocus value="{{ old('slug', $post->slug) }}">
 
 							@error('slug')
 								<div class="invalid-feedback">
@@ -77,14 +78,7 @@
 						<div class="grid grid-cols-1 space-y-2">
 							<label for="user_id" class="text-sm font-bold text-gray-500 tracking-wide">Select User</label>
                                 <select class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" name="user_id" id="user">
-                                        <option disabled @if(!old('user_id')) selected @endif> -- select an option -- </option>
-                                    @foreach($users as $user)
-                                        @if(old('user_id') == $user->id))
-                                        <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
-                                        @else
-                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                        @endif
-                                    @endforeach
+                                        <option value="{{ $post->user->id }}" selected>{{ $post->user->name }}</option>
                                 </select>
 
 							@error('user_id')
@@ -96,9 +90,9 @@
 						<div class="grid grid-cols-1 space-y-2">
 							<label for="category_id" class="text-sm font-bold text-gray-500 tracking-wide">Select Category</label>
                                 <select class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" name="category_id" id="category">
-                                        <option disabled @if(!old('category_id')) selected @endif> -- select an option -- </option>
+                                        <option disabled @if(!old('category_id', $post->category_id)) selected @endif> -- select an option -- </option>
                                     @foreach($categories as $category)
-                                        @if(old('category_id') == $category->id))
+                                        @if(old('category_id', $post->category_id) == $category->id))
                                         <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                                         @else
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -114,7 +108,7 @@
 						</div>
 						<div class="grid grid-cols-1 space-y-2">
 							<label for="body" class="text-sm font-bold text-gray-500 tracking-wide">Body</label>
-								<textarea class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="text" placeholder="" @error('body') is-invalid @enderror name="body" id="body" required autofocus value="{{ old('body') }}"></textarea>
+								<textarea class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="text" placeholder="" @error('body') is-invalid @enderror name="body" id="body" required autofocus value="{{ old('body') }}">{{ $post->body }}</textarea>
 
 							@error('body')
 								<div class="invalid-feedback">

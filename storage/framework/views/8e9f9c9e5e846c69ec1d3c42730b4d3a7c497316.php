@@ -7,8 +7,8 @@
 
             <nav>
                 <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
-                    <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Shop</a></li>
-                    <li><a class="hover:text-gray-200 hover:underline px-4" href="#">About</a></li>
+                    <li><a class="hover:text-gray-200 hover:underline px-4" href="<?php echo e(route('blog.index')); ?>">Home</a></li>
+                    <li><a class="hover:text-gray-200 hover:underline px-4" href="<?php echo e(route('blog.create')); ?>">Create</a></li>
                 </ul>
             </nav>
 
@@ -42,27 +42,6 @@
         </div>
     </header>
 
-    <!-- Topic Nav -->
-    <nav class="w-full py-4 border-t border-b bg-gray-100" x-data="{ open: false }">
-        <div class="block sm:hidden">
-            <a href="#" class="block md:hidden text-base font-bold uppercase text-center flex justify-center items-center"
-                @click="open = !open">
-                Topics <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
-            </a>
-        </div>
-        <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
-            <div
-                class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Technology</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Automotive</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Finance</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Politics</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Culture</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Sports</a>
-            </div>
-        </div>
-    </nav>
-
     <div class="container mx-auto flex flex-wrap py-6">
 
         <!-- Post Section -->
@@ -71,13 +50,29 @@
             <article class="flex flex-col shadow my-4">
                 <!-- Article Image -->
                 <a href="#" class="hover:opacity-75">
-                    <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1">
+                        <?php if( $post->image): ?>
+                            <img src="<?php echo e(asset($post->image)); ?>">
+                        <?php else: ?> 
+                            <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1">
+                        <?php endif; ?>
                 </a>
                 <div class="bg-white flex flex-col justify-start p-6">
-                    <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4"><?php echo e($post->category->name); ?></a>
+                    <div class="flex justify-between">
+                        <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4"><?php echo e($post->category->name); ?></a>
+                        <div class="flex gap-2">
+                            <a href="<?php echo e(route('blog.edit', $post->id)); ?>" class="btn bg-yellow-700 hover:bg-yellow-500 py-2 px-5 text-white rounded-xl">Edit Post</a>
+                            <form action="<?php echo e(route('blog.destroy', $post->id)); ?>" method="post">
+                                <?php echo csrf_field(); ?>
+                                <button type="submit" class="btn bg-red-700 hover:bg-red-500 py-2 px-5 text-white rounded-xl">
+                                    <a href="" class="">Delete Post</a>
+                                </button>    
+                            </form>
+                        </div>
+                    </div>
                     <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4"><?php echo e($post->name); ?></a>
                     <p href="#" class="text-sm pb-8">
-                        By <a href="#" class="font-semibold hover:text-gray-800"><?php echo e("post->user->name"); ?></a>, Published on <?php echo e($post->created_at->format('F jS, Y')); ?> | April 25th, 2020
+                        By <a href="#" class="font-semibold hover:text-gray-800"><?php echo e($user->name); ?></a>, Published on <?php echo e($post->created_at->format('F jS, Y')); ?>
+
                     </p>
                     <h1 class="text-2xl font-bold pb-3">Content</h1>
                     <p class="pb-3"><?php echo $post->body; ?></p>
@@ -85,23 +80,27 @@
             </article>
 
             <div class="w-full flex pt-6">
-                <a href="#" class="w-1/2 bg-white shadow hover:shadow-md text-left p-6">
-                    <p class="text-lg text-blue-800 font-bold flex items-center"><i class="fas fa-arrow-left pr-1"></i> Previous</p>
-                    <p class="pt-2">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</p>
-                </a>
-                <a href="#" class="w-1/2 bg-white shadow hover:shadow-md text-right p-6">
-                    <p class="text-lg text-blue-800 font-bold flex items-center justify-end">Next <i class="fas fa-arrow-right pl-1"></i></p>
-                    <p class="pt-2">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</p>
-                </a>
+                <?php if($PVpost): ?>
+                    <a href="<?php echo e(route('blog.show', $PVpost->id)); ?>" class="w-1/2 bg-white shadow hover:shadow-md text-left p-6">
+                        <p class="text-lg text-blue-800 font-bold flex items-center"><i class="fas fa-arrow-left pr-1"></i> Previous</p>
+                        <p class="pt-2"><?php echo e($PVpost->title); ?></p>
+                    </a>
+                <?php endif; ?>
+                <?php if($NXpost): ?>
+                    <a href="<?php echo e(route('blog.show', $NXpost->id)); ?>" class="w-1/2 bg-white shadow hover:shadow-md text-right p-6">
+                        <p class="text-lg text-blue-800 font-bold flex items-center justify-end">Next <i class="fas fa-arrow-right pl-1"></i></p>
+                        <p class="pt-2"><?php echo e($NXpost->title); ?></p>
+                    </a>
+                <?php endif; ?>
             </div>
 
-            <div class="w-full flex flex-col text-center md:text-left md:flex-row shadow bg-white mt-10 mb-10 p-6">
+            <div class="w-full flex flex-col gap-2 text-center md:text-left md:flex-row shadow bg-white mt-10 mb-10 p-6">
                 <div class="w-full md:w-1/5 flex justify-center md:justify-start pb-4">
                     <img src="https://source.unsplash.com/collection/1346951/150x150?sig=1" class="rounded-full shadow h-32 w-32">
                 </div>
                 <div class="flex-1 flex flex-col justify-center md:justify-start">
-                    <p class="font-semibold text-2xl">David</p>
-                    <p class="pt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel neque non libero suscipit suscipit eu eu urna.</p>
+                    <p class="font-semibold text-2xl"><?php echo e($user->name); ?></p>
+                    <p class="pt-2"><?php echo e($user->email); ?></p>
                     <div class="flex items-center justify-center md:justify-start text-2xl no-underline text-blue-800 pt-4">
                         <a class="" href="#">
                             <i class="fab fa-facebook"></i>
