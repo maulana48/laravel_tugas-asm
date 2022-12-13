@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\{ ProductController, BlogController};
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +24,28 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/e-commerce', [ProductController::class, 'index']);
-Route::get('/e-commerce/{id}', [ProductController::class, 'show']);
 
-Route::post('/e-commerce', [ProductController::class, 'store']);
-Route::post('/e-commerce/update/{id}', [ProductController::class, 'update']);
-Route::post('/e-commerce/{id}', [ProductController::class, 'destroy']);
+Route::prefix('e-commerce')
+    ->name('ec.')
+    ->controller(ProductController::class)
+    ->group(function(){
+        Route::get('/', 'index');
+        Route::get('/{id}', 'show');
+
+        Route::post('/', 'store');
+        Route::post('/update/{id}', 'update');
+        Route::post('/{id}', 'destroy');
+    });
+
+Route::prefix('Blog')
+    ->name('blog.')
+    ->controller(BlogController::class)
+    ->group(function(){
+        Route::get('/', 'index');
+        Route::get('/{id}', 'show');
+
+        Route::post('/', 'store');
+        Route::post('/update/{id}', 'update');
+        Route::post('/{id}', 'destroy');
+    });
+    
