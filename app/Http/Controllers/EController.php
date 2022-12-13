@@ -68,8 +68,9 @@ class EController extends Controller
     }
 
     public function destroy(Request $request, Product $product){
-        File::delete(public_path('uploads/csv/img.png'));
-        $product->delete();
+        File::delete(public_path($product->foto));
+        
+        $product = $product->delete();
         return redirect()->route('ec.index');
     }
 }
